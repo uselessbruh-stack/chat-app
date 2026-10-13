@@ -3,7 +3,7 @@ from flask_socketio import SocketIO, send, emit
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app, cors_allowed_origins="*",async_mode="threading"))
+socketio = SocketIO(app, cors_allowed_origins="*",async_mode="threading")
 
 @app.route('/')
 def index():
@@ -31,4 +31,4 @@ def handleUserLeft(data):
     }, broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
+    socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
